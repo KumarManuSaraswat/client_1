@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Ignore the real environment variables
+.env
+
+# Allow the example file to be committed
+!.env.example
