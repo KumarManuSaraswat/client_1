@@ -17,14 +17,9 @@ services:
     container_name: mern-server
     ports:
       - "5000:5000" # Maps host port 5000 to container port 5000
-    environment:
-      - PORT=5000
-      # Notice we use "mongo:27017" here instead of "localhost" to use Docker's internal network
-      - MONGODB_URI=mongodb://mongo:27017/mern_db 
-      - JWT_SECRET=${JWT_SECRET}
-      - CLOUDINARY_CLOUD_NAME=${CLOUDINARY_CLOUD_NAME}
-      - CLOUDINARY_API_KEY=${CLOUDINARY_API_KEY}
-      - CLOUDINARY_API_SECRET=${CLOUDINARY_API_SECRET}
+    # Replaced the 'environment' block with env_file
+    env_file:
+      - ./server/.env
     depends_on:
       - mongo
 
